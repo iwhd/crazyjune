@@ -5,199 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <link href="../css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #f1f1f1;
-      font-family: Arial;
-      min-width: 360px;
-    }
-
-    /* Center website */
-    .main {
-      margin: auto;
-      padding: 10px;
-    }
-
-    h1 {
-      font-size: 50px;
-      word-break: break-all;
-    }
-
-    .row {
-      margin: 10px -16px;
-    }
-
-    /* Add padding BETWEEN each column */
-    .row,
-    .row>.column {
-      padding: 8px;
-    }
-
-    /* Create three equal columns that floats next to each other */
-    .column {
-      float: left;
-      display: none;
-      /* Hide all elements by default */
-    }
-
-    /* Clear floats after rows */
-    .row:after {
-      content: "";
-      display: tbl;
-      clear: both;
-    }
-
-    /* Content */
-    .content {
-      background-color: white;
-      padding: 10px;
-    }
-
-    .content>img {
-      width: 100%;
-      min-width: 360px;
-    }
-
-    /* The "show" class is added to the filtered elements */
-    .show {
-      display: block;
-    }
-
-    .overlay-custom {
-      padding: 5px 5px;
-    }
-
-    .language .dropdown-menu {
-      min-width: 4rem;
-    }
-
-    #wrapper {
-      display: flex;
-      min-height: 100vh;
-      min-width: 384px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      padding: .25rem .5rem;
-      font-weight: 600;
-      color: rgba(0, 0, 0, .65);
-      background-color: transparent;
-      border: 0;
-      width: 100%;
-    }
-
-    .btn-toggle::after {
-      width: 1.25em;
-      margin-left: 0.5em;
-      line-height: 0;
-      content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-      transition: transform .35s ease;
-      transform-origin: .5em 50%;
-    }
-
-    .btn-toggle[aria-expanded="true"] {
-      color: rgba(0, 0, 0, .85);
-    }
-
-    .btn-toggle[aria-expanded="true"]::after {
-      transform: rotate(90deg);
-    }
-
-    .btn-toggle-nav a {
-      display: inline-flex;
-      padding: .1875rem .5rem;
-      margin-top: .125rem;
-      margin-left: 0.25rem;
-      text-decoration: none;
-      width: 100%;
-    }
-
-    .btn:hover,
-    .btn-toggle-nav a:hover,
-    .btn-toggle-nav a:focus {
-      background-color: #dadada;
-    }
-
-    #logo {
-      transform: rotate(-23deg);
-    }
-
-    @media (min-width: 992px) {
-      .navbar-expand-lg .navbar-collapse {
-        height: 46px;
-        max-height: 46px;
-      }
-
-      .dropdown-menu {
-        max-height: 90vh;
-        overflow: auto;
-      }
-
-      .dropdown-item {
-        padding: .25rem 1.5rem;
-      }
-
-      nav {
-        min-width: 240px !important;
-        border-right: 1px solid rgba(0, 0, 0, .125);
-        display: block !important;
-      }
-
-      .menu-content {
-        display: block !important;
-      }
-    }
-
-    nav {
-      min-width:: 70px;
-      border-right: 1px solid rgba(0, 0, 0, .125);
-      display: block;
-    }
-
-    .menu-content {
-      display: none;
-    }
-
-    nav.collapsing {
-      min-width: 70px;
-    }
-
-    nav.collapse:not(.show) {
-      width: 70px;
-      display: block;
-    }
-
-    nav.collapse:not(.show) .menu-content {
-      display: none;
-    }
-
-    nav.collapse.show {
-      min-width:: 240px !important;
-    }
-
-    nav.collapse.show .menu-content {
-      display: block;
-    }
-
-    #sidebar-toggler>svg {
-      min-width:: 1em;
-      line-height: 0;
-      transition: transform .35s ease;
-      transform-origin: center;
-      margin-left: 0.1em;
-    }
-
-    #sidebar-toggler[aria-expanded="true"] {
-      transform: rotate(180deg);
-    }
-  </style>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/main.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  
   <script src="../js/yall.min.js"></script>
+  <script src="js/yall.min.js"></script>
+
   <script>
     document.addEventListener("DOMContentLoaded", yall);
   </script>
@@ -217,7 +31,6 @@
         <img src="https://stbstatic.crazyjune.eu/images/assets/logo.png" id="logo" class="rounded-circle" alt="Crazy June" style="width: 100%;">
       </a>
       <ul class="nav nav-pills flex-column menu-content">
-
         <li>
           <a class="nav-link link-dark active">
             Znajdź scenę
@@ -227,40 +40,37 @@
       </ul>
 
       <ul class="flex-column list-unstyled menu-content">
-
-
-
         <li>
-          <a class="btn align-items-center collapsed" onclick="filterSelection('all')">Wszystkie</a>
+          <a class="btn align-items-center collapsed" onclick="filterSelection('all')" data-bs-toggle="collapse" data-bs-target="nav">Wszystkie</a>
         </li>
         <li>
           <a class="btn btn-toggle align-items-center collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#objects-collapse" aria-expanded="false">Obiekty</a>
           <div class="collapse" id="objects-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a class="link-dark rounded" onclick="filterSelection('pool')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Basen</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('desk')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Biurko</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('gate')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Brama / Furtka</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('budka')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Budka</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('tr3e')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Drzewo</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('door')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Drzwi / Wejście</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('foun')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Fontanna</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('piano')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Fortepian</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('chair')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Fotel</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('c4m')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Kamera</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('fire')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Kominek</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('horse')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Koń</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('bench')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Ławka</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('boat')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Łódź/Statek/Dok</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('b3d')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Łóżko</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('most')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Most / Kładka</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('tent')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Namiot</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('traim')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Pociąg / Tramwaj</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('st4t')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Posąg</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('auto')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Samochód</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('samo')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Samolot / Hangar</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('star')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Schody</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('t4bl3')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Stół / Lada</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('cart')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Wózek / Taczka</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('pool')" data-bs-toggle="collapse" data-bs-target="nav">Basen</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('desk')" data-bs-toggle="collapse" data-bs-target="nav">Biurko</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('gate')" data-bs-toggle="collapse" data-bs-target="nav">Brama / Furtka</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('budka')" data-bs-toggle="collapse" data-bs-target="nav">Budka</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('tr3e')" data-bs-toggle="collapse" data-bs-target="nav">Drzewo</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('door')" data-bs-toggle="collapse" data-bs-target="nav">Drzwi / Wejście</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('foun')" data-bs-toggle="collapse" data-bs-target="nav">Fontanna</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('piano')" data-bs-toggle="collapse" data-bs-target="nav">Fortepian</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('chair')" data-bs-toggle="collapse" data-bs-target="nav">Fotel</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('c4m')" data-bs-toggle="collapse" data-bs-target="nav">Kamera</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('fire')" data-bs-toggle="collapse" data-bs-target="nav">Kominek</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('horse')" data-bs-toggle="collapse" data-bs-target="nav">Koń</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('bench')" data-bs-toggle="collapse" data-bs-target="nav">Ławka</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('boat')" data-bs-toggle="collapse" data-bs-target="nav">Łódź/Statek/Dok</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('b3d')" data-bs-toggle="collapse" data-bs-target="nav">Łóżko</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('most')" data-bs-toggle="collapse" data-bs-target="nav">Most / Kładka</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('tent')" data-bs-toggle="collapse" data-bs-target="nav">Namiot</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('traim')" data-bs-toggle="collapse" data-bs-target="nav">Pociąg / Tramwaj</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('st4t')" data-bs-toggle="collapse" data-bs-target="nav">Posąg</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('auto')" data-bs-toggle="collapse" data-bs-target="nav">Samochód</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('samo')" data-bs-toggle="collapse" data-bs-target="nav">Samolot / Hangar</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('star')" data-bs-toggle="collapse" data-bs-target="nav">Schody</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('t4bl3')" data-bs-toggle="collapse" data-bs-target="nav">Stół / Lada</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('cart')" data-bs-toggle="collapse" data-bs-target="nav">Wózek / Taczka</a></li>
             </ul>
           </div>
         </li>
@@ -268,23 +78,23 @@
           <a class="btn btn-toggle align-items-center collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#rooms-collapse" aria-expanded="false">Pomieszczenia</a>
           <div class="collapse" id="rooms-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a class="link-dark rounded" onclick="filterSelection('at3lier')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Atelier</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('btgp')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Balkon / Taras / Ganek</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('office')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Biuro / Recepcja / Apteka / Gabinet</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('t0p')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Dach</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('foyer')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Foyer / Lobby / Hol</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('work')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Garaż / Warsztat</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('coridor')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Korytarz</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('kitchen')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Kuchnia</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('lab')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Labolatorium</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('toil')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Łaźnia / Toaleta</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('patio')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Patio</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('bllrm')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Sala balowa</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('parlor')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Salon</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('battic')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Strych / Piwnica</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('bdrm')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Sypialnia</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('l0ck')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Szatnia / Garderoba</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('gho')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Szklarnia / Oranżeria</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('at3lier')" data-bs-toggle="collapse" data-bs-target="nav">Atelier</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('btgp')" data-bs-toggle="collapse" data-bs-target="nav">Balkon / Taras / Ganek</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('office')" data-bs-toggle="collapse" data-bs-target="nav">Biuro / Recepcja / Apteka / Gabinet</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('t0p')" data-bs-toggle="collapse" data-bs-target="nav">Dach</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('foyer')" data-bs-toggle="collapse" data-bs-target="nav">Foyer / Lobby / Hol</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('work')" data-bs-toggle="collapse" data-bs-target="nav">Garaż / Warsztat</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('coridor')" data-bs-toggle="collapse" data-bs-target="nav">Korytarz</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('kitchen')" data-bs-toggle="collapse" data-bs-target="nav">Kuchnia</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('lab')" data-bs-toggle="collapse" data-bs-target="nav">Labolatorium</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('toil')" data-bs-toggle="collapse" data-bs-target="nav">Łaźnia / Toaleta</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('patio')" data-bs-toggle="collapse" data-bs-target="nav">Patio</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('bllrm')" data-bs-toggle="collapse" data-bs-target="nav">Sala balowa</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('parlor')" data-bs-toggle="collapse" data-bs-target="nav">Salon</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('battic')" data-bs-toggle="collapse" data-bs-target="nav">Strych / Piwnica</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('bdrm')" data-bs-toggle="collapse" data-bs-target="nav">Sypialnia</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('l0ck')" data-bs-toggle="collapse" data-bs-target="nav">Szatnia / Garderoba</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('gho')" data-bs-toggle="collapse" data-bs-target="nav">Szklarnia / Oranżeria</a></li>
             </ul>
           </div>
         </li>
@@ -292,28 +102,28 @@
           <a class="btn btn-toggle align-items-center collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#places-collapse" aria-expanded="false">Miejsca</a>
           <div class="collapse" id="places-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a class="link-dark rounded" onclick="filterSelection('bar')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Bar / Klub</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('bazar')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Bazar/Stragan</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('house')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Dom / Chata</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('gallery')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Galeria</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('library')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Gmach / Biblioteka</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('hotel')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Hotel</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('jewel')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Jubiler</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('cafe')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Kawiarnia</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('casino')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Kasyno</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('temple')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Kościół / Cmentarz / Świątynia</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('jungle')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Las / Dżungla</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('garden')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Ogród / Park</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('beach')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Plaża</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('wild')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Plener</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('pdz')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Podziemie / Kopalnia / Jaskinia</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('police')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Posterunek policji / Remiza strażacka</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('rest')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Restauracja</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('shop')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Sklep</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('school')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Szkoła</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('hospital')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Szpital</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('street')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Ulica</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('corner')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Zaułek</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('bar')" data-bs-toggle="collapse" data-bs-target="nav">Bar / Klub</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('bazar')" data-bs-toggle="collapse" data-bs-target="nav">Bazar/Stragan</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('house')" data-bs-toggle="collapse" data-bs-target="nav">Dom / Chata</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('gallery')" data-bs-toggle="collapse" data-bs-target="nav">Galeria</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('library')" data-bs-toggle="collapse" data-bs-target="nav">Gmach / Biblioteka</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('hotel')" data-bs-toggle="collapse" data-bs-target="nav">Hotel</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('jewel')" data-bs-toggle="collapse" data-bs-target="nav">Jubiler</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('cafe')" data-bs-toggle="collapse" data-bs-target="nav">Kawiarnia</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('casino')" data-bs-toggle="collapse" data-bs-target="nav">Kasyno</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('temple')" data-bs-toggle="collapse" data-bs-target="nav">Kościół / Cmentarz / Świątynia</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('jungle')" data-bs-toggle="collapse" data-bs-target="nav">Las / Dżungla</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('garden')" data-bs-toggle="collapse" data-bs-target="nav">Ogród / Park</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('beach')" data-bs-toggle="collapse" data-bs-target="nav">Plaża</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('wild')" data-bs-toggle="collapse" data-bs-target="nav">Plener</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('pdz')" data-bs-toggle="collapse" data-bs-target="nav">Podziemie / Kopalnia / Jaskinia</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('police')" data-bs-toggle="collapse" data-bs-target="nav">Posterunek policji / Remiza strażacka</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('rest')" data-bs-toggle="collapse" data-bs-target="nav">Restauracja</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('shop')" data-bs-toggle="collapse" data-bs-target="nav">Sklep</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('school')" data-bs-toggle="collapse" data-bs-target="nav">Szkoła</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('hospital')" data-bs-toggle="collapse" data-bs-target="nav">Szpital</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('street')" data-bs-toggle="collapse" data-bs-target="nav">Ulica</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('corner')" data-bs-toggle="collapse" data-bs-target="nav">Zaułek</a></li>
             </ul>
           </div>
         </li>
@@ -321,18 +131,18 @@
           <a class="btn btn-toggle align-items-center collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#colors-collapse" aria-expanded="false">Kolory</a>
           <div class="collapse" id="colors-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a class="link-dark rounded" onclick="filterSelection('white')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Biały</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('r3d')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Czerwony</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('purple')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Fioletowy</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('green')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Zielony</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('rain')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Deszcz</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('night')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Noc</a></li>
-              <li><a class="link-dark rounded" onclick="filterSelection('winter')" data-bs-toggle="collapse" data-bs-target="#navbarScroll">Zima</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('white')" data-bs-toggle="collapse" data-bs-target="nav">Biały</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('r3d')" data-bs-toggle="collapse" data-bs-target="nav">Czerwony</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('purple')" data-bs-toggle="collapse" data-bs-target="nav">Fioletowy</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('green')" data-bs-toggle="collapse" data-bs-target="nav">Zielony</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('rain')" data-bs-toggle="collapse" data-bs-target="nav">Deszcz</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('night')" data-bs-toggle="collapse" data-bs-target="nav">Noc</a></li>
+              <li><a class="link-dark rounded" onclick="filterSelection('winter')" data-bs-toggle="collapse" data-bs-target="nav">Zima</a></li>
             </ul>
           </div>
         </li>
         <li>
-          <a class="btn align-items-center collapsed" role="button" onclick="filterSelection('misc')">Pozostałe</a>
+          <a class="btn align-items-center collapsed" role="button" onclick="filterSelection('misc')" data-bs-toggle="collapse" data-bs-target="nav">Pozostałe</a>
         </li>
       </ul>
     </nav>
@@ -345,13 +155,13 @@
             <div class="column door foun auto house srt">
               <div class="content card text-white">
                 <img class="card-img lazy" src="https://stbstatic.crazyjune.eu/images/small/placeholder.png" data-src='https://stbstatic.crazyjune.eu/images/small/1.jpg' title='1' alt="door foun auto house srt">
-                <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+                <a href="test-image.html" class="text-reset text-decoration-none card-img-overlay h-100 d-flex flex-column justify-content-end">
                   <div class="overlay-custom bg-dark text-center" style="--bs-bg-opacity: .5;">
                     <h5 class="card-title d-none d-sm-block">Dom na Wyspie Orchidei</h5>
                     <p class="card-text">Tom: I Rozdział: 1 Scena: 1 </p>
                     <p class="card-text">door foun auto house srt</p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
             <div class="column fire st4t t4bl3 parlor srt">
@@ -14508,6 +14318,7 @@
     </main>
   </div>
   <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
   <script>
     filterSelection("all")
     function filterSelection(c) {
