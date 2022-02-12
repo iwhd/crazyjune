@@ -7,10 +7,7 @@
   <title>Crazy June | STB - Scene finder</title>
   <link href="../css/bootstrap.min.css" rel="stylesheet">
   <link href="../css/main.css" rel="stylesheet">
-  <script src="../js/yall.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", yall);
-  </script>
+  <script src="../js/lazyload.min.js"></script>
 </head>
 </head>
 
@@ -13775,6 +13772,13 @@
     <p class="my-0">crazyjune</p>
   </footer> 
   <script src="../js/bootstrap.bundle.min.js"></script>
+  <script>
+    var lazyLoadInstance = new LazyLoad({
+      callback_error: (img) => {
+        img.setAttribute("src", "https://stbstatic.crazyjune.eu/images/thumbnails/placeholder.png");
+      }
+    });
+  </script>
   <script>
       filterSelection("all")
       function filterSelection(c) {

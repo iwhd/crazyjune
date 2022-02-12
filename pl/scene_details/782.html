@@ -7,10 +7,7 @@
   <title>Crazy June | Scene 782 - Sklep jubilerski Irene</title>
   <link href="../../css/bootstrap.min.css" rel="stylesheet">
   <link href="../../css/main.css" rel="stylesheet">
-  <script src="../../js/yall.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", yall);
-  </script>
+  <script src="../../js/lazyload.min.js"></script>
 </head>
 </head>
 
@@ -63,13 +60,14 @@
       <div class="container-fluid">
         <!--<h2 id="empty" class="mt-1 link-dark text-decoration-none border-bottom">Puste</h2>-->
         <img src="https://stbstatic.crazyjune.eu/images/large/782-pl.jpg" class="mb-5 img-fluid img-thumbnail" alt="...">
-
-
+        <!--<h2 id="tagged" class="mt-1 link-dark text-decoration-none border-bottom">Opisane</h2>-->
+        <img class="mb-5 img-fluid img-thumbnail lazy" src="https://stbstatic.crazyjune.eu/images/assets/cs-pl.png" data-src='https://stbstatic.crazyjune.eu/images/large/solved/782-pl.jpg' title='782' alt='782'>
         <!--
         <h2 id="youtube" class="mt-1 link-dark text-decoration-none border-bottom">Youtube</h2>
         <img src="https://stbstatic.crazyjune.eu/images/large/782-pl.jpg" class="mb-5 img-fluid img-thumbnail" alt="...">
         <h2 id="other" class="mt-1 link-dark text-decoration-none border-bottom">Inne</h2>
         <img src="https://stbstatic.crazyjune.eu/images/large/782-pl.jpg" class="mb-5 img-fluid img-thumbnail" alt="...">
+        -->
       </div>
     </main>
   </div>
@@ -79,6 +77,13 @@
     <p class="my-0">crazyjune</p>
   </footer> 
   <script src="../../js/bootstrap.bundle.min.js"></script>
+  <script>
+    var lazyLoadInstance = new LazyLoad({
+      callback_error: (img) => {
+        img.setAttribute("src", "https://stbstatic.crazyjune.eu/images/assets/cs-pl.png");
+      }
+    });
+  </script>
 </body>
 
 </html>
