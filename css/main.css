@@ -113,6 +113,7 @@
     .btn:hover,
     .btn-toggle-nav a:hover,
     .btn-toggle-nav a:focus,
+    .btn-toggle-nav a.active, 
     .languale-dropdown a:hover,
     .languale-dropdown a:focus {
       background-color: #dadada;
